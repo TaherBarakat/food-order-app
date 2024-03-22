@@ -10,7 +10,9 @@ export default function Item({ item }) {
                     <div className="meal-item-description">
                          {item.description}
                     </div>
-                    <button className="button">Add To Cart</button>
+                    <button className="button  meal-item-actions  ">
+                         Add To Cart
+                    </button>
                </article>
           </div>
      );
