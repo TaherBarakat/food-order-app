@@ -7,7 +7,7 @@ export default function Header() {
      const [modalIsoOpen, setModalIsOpen] = useState(false);
      const modal = useRef();
      function open() {
-          modalIsoOpen ? modal.current.showModal() : modal.current.close();
+          !modalIsoOpen ? modal.current.showModal() : modal.current.close();
      }
      return (
           <div id="main-header">
