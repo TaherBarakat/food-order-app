@@ -1,6 +1,10 @@
 import React from "react";
+import { useContext } from "react";
+import { cartItemsContext } from "../store/CartItems";
 
 export default function Item({ item }) {
+     const { onAddCart, cartItems } = useContext(cartItemsContext);
+
      return (
           <div className="meal-item">
                <article>
@@ -10,8 +14,17 @@ export default function Item({ item }) {
                     <div className="meal-item-description">
                          {item.description}
                     </div>
-                    <button className="button  meal-item-actions  ">
-                         Add To Cart
+                    <button
+                         onClick={() => onAddCart({ ...item, quantity: 1 })}
+                         className="button  meal-item-actions  "
+                         disabled={cartItems.find(
+                              (itemA) => itemA.id == item.id
+                         )}
+                    >
+                         {cartItems.find((itemA) => itemA.id == item.id)
+                              ? "Added"
+                              : "Add"}{" "}
+                         To Cart
                     </button>
                </article>
           </div>

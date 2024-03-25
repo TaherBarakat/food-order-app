@@ -36,8 +36,10 @@ body {
 }
 
 #main-header button {
+     /* all: unset; */
      font-size: 1.5rem;
      font-family: "Lato", sans-serif;
+     /* outline: none; */
 }
 
 h1 {
@@ -275,5 +277,16 @@ h1 {
      to {
           opacity: 1;
           transform: translateY(0);
+     }
+}
+button:disabled {
+     background-color: green;
+     color: #ccc;
+     border: none;
+     &:hover {
+          background-color: green;
+          color: #ccc;
+          border: none;
+          cursor: default;
      }
 }
