@@ -15,9 +15,34 @@ export default function CartItemsProvider({ children }) {
           if (cartItems.find((itemA) => itemA.id == item.id)) return;
           setCartItems((prev) => [...prev, item]);
      }
+     function incAmount(item) {
+          setCartItems((prev) => {
+               let updatedCart = [...prev];
+               updatedCart[prev.indexOf(item)].quantity += 1;
+               return updatedCart;
+          });
+     }
+     function decAmount(item) {
+          setCartItems((prev) => {
+               let updatedCart = [...prev];
+               updatedCart[prev.indexOf(item)].quantity -= 1;
+               if (updatedCart[prev.indexOf(item)].quantity <= 0)
+                    return updatedCart.filter((i) => i != item);
+
+               return updatedCart;
+          });
+     }
+
      return (
           <cartItemsContext.Provider
-               value={{ cartItems, meals, setCartItems, onAddCart }}
+               value={{
+                    cartItems,
+                    meals,
+                    setCartItems,
+                    onAddCart,
+                    incAmount,
+                    decAmount,
+               }}
           >
                {children}
           </cartItemsContext.Provider>

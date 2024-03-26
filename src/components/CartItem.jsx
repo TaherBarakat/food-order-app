@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CartItem({ item }) {
+export default function CartItem({ item, onInc, onDec }) {
      console.log(item);
      return (
           <div className="cart-item">
@@ -8,9 +8,9 @@ export default function CartItem({ item }) {
                     {item.name} - {item.quantity} &times; {item.price}
                </p>
                <div className="cart-item-actions">
-                    <button>-</button>
+                    <button onClick={() => onDec(item)}>-</button>
                     {item.quantity}
-                    <button>+</button>
+                    <button onClick={() => onInc(item)}>+</button>
                </div>
           </div>
      );

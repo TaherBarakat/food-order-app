@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 import { cartItemsContext } from "../store/CartItems";
 import CartItem from "./CartItem";
 const Cart = forwardRef(function ({}, ref) {
-     const { cartItems } = useContext(cartItemsContext);
+     const { cartItems, decAmount, incAmount } = useContext(cartItemsContext);
      // console.log(cartItems);
 
      return createPortal(
@@ -14,7 +14,12 @@ const Cart = forwardRef(function ({}, ref) {
                     <p>no items yet</p>
                ) : (
                     cartItems.map((item) => (
-                         <CartItem key={item.id} item={item} />
+                         <CartItem
+                              key={item.id}
+                              item={item}
+                              onInc={incAmount}
+                              onDec={decAmount}
+                         />
                     ))
                )}
           </dialog>,
