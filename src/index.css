@@ -196,7 +196,14 @@ h1 {
      background-color: #1d1a16;
      color: #ffab04;
 }
-
+/* ccccccccccc */
+/* ccccccccccc */
+/* ccccccccccc */
+/* ccccccccccc */
+/* ccccccccccccccccccccccccccccccc */
+/* ccccccccccccccccccccccccccccccc */
+/* ccccccccccccccccccccccccccccccc */
+/* ccccccccccccccccccccccccccccccc */
 .control {
      margin: 0.5rem 0;
      display: flex;
@@ -232,7 +239,10 @@ h1 {
      padding: 0.5rem 1.5rem;
      border-radius: 4px;
 }
-
+/* ccccccccccccccccccccccccccccccc */
+/* ccccccccccccccccccccccccccccccc */
+/* ccccccccccccccccccccccccccccccc */
+/* ccccccccccccccccccccccccccccccc */
 .button:hover,
 .button:active {
      background-color: #ffab04;
@@ -265,7 +275,7 @@ h1 {
 }
 
 .modal::backdrop {
-     background-color: rgba(0, 0, 0, 0.55);
+     background-color: rgba(0, 0, 0, 0.623);
 }
 
 @keyframes fade-slide-up {
@@ -288,5 +298,15 @@ button:disabled {
           color: #ccc;
           border: none;
           cursor: default;
+     }
+}
+
+.modal-actions button:disabled {
+     background-color: #ccc;
+     color: #d9e2f1;
+
+     &:hover {
+          background-color: #ccc;
+          color: #d9e2f1;
      }
 }

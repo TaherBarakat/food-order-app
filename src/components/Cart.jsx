@@ -1,11 +1,10 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { forwardRef } from "react";
 import { cartItemsContext } from "../store/CartItems";
 import CartItem from "./CartItem";
-const Cart = forwardRef(function ({ onOpen }, ref) {
+const Cart = forwardRef(function ({ onClose, onOpenForm }, ref) {
      const { cartItems, decAmount, incAmount } = useContext(cartItemsContext);
-     // console.log(cartItems);
 
      return createPortal(
           <dialog ref={ref} className="cart modal">
@@ -34,10 +33,14 @@ const Cart = forwardRef(function ({ onOpen }, ref) {
                )}
 
                <div className="modal-actions ">
-                    <button onClick={onOpen} className="text-button">
+                    <button onClick={onClose} className="text-button">
                          Close
                     </button>
-                    <button className="text-button button">
+                    <button
+                         className="text-button button"
+                         disabled={cartItems.length === 0}
+                         onClick={onOpenForm}
+                    >
                          Go To Checkout
                     </button>
                </div>
