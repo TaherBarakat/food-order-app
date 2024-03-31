@@ -1,11 +1,35 @@
 import React, { forwardRef, useContext } from "react";
 import { createPortal } from "react-dom";
 import { cartItemsContext } from "../store/CartItems";
+import { useRef } from "react";
 const CheckoutForm = forwardRef(function ({ onBack, onSubmit }, ref) {
-     const { cartItems } = useContext(cartItemsContext);
+     const { cartItems, setCartItems } = useContext(cartItemsContext);
+     const formRef = useRef();
+
+     function handleSubmit(event) {
+          event.preventDefault();
+          console.log(event);
+          let formData = new FormData(formRef.current);
+          let customer = Object.fromEntries(formData.entries());
+
+          let order = { items: cartItems, customer };
+          fetch("http://localhost:3000/orders", {
+               headers: {
+                    "Content-Type": "application/json",
+               },
+               method: "POST",
+               body: JSON.stringify({
+                    order,
+               }),
+          });
+          setCartItems([]);
+
+          onSubmit();
+     }
+
      return createPortal(
           <dialog ref={ref} className="cart modal">
-               <form action="">
+               <form ref={formRef} onSubmit={(e) => handleSubmit(e)}>
                     <h2>Checkout</h2>
                     <p>
                          Total Amount: $
@@ -17,31 +41,56 @@ const CheckoutForm = forwardRef(function ({ onBack, onSubmit }, ref) {
                     <div className="control-row">
                          <div className="control">
                               <label htmlFor="name">Full Name</label>
-                              <input type="text" id="name" />
+                              <input
+                                   required
+                                   name="name"
+                                   type="text"
+                                   id="name"
+                              />
                          </div>
                     </div>
 
                     <div className="control-row">
                          <div className="control">
                               <label htmlFor="email">E-mail Address</label>
-                              <input type="email" id="email" />
+                              <input
+                                   required
+                                   name="email"
+                                   type="email"
+                                   id="email"
+                              />
                          </div>
                     </div>
                     <div className="control-row">
                          <div className="control">
                               <label htmlFor="street">Street</label>
-                              <input type="text" id="street" />
+                              <input
+                                   required
+                                   name="street"
+                                   type="text"
+                                   id="street"
+                              />
                          </div>
                     </div>
                     <div className="control-row">
                          <div className="control">
                               <label htmlFor="postal">Postal Code</label>
-                              <input type="number" id="postal" />
+                              <input
+                                   required
+                                   name="postal-code"
+                                   type="number"
+                                   id="postal"
+                              />
                          </div>
 
                          <div className="control">
                               <label htmlFor="city">City</label>
-                              <input type="text" id="city" />
+                              <input
+                                   required
+                                   name="city"
+                                   type="text"
+                                   id="city"
+                              />
                          </div>
                     </div>
                     <div className="modal-actions ">
@@ -52,11 +101,7 @@ const CheckoutForm = forwardRef(function ({ onBack, onSubmit }, ref) {
                          >
                               Back
                          </button>
-                         <button
-                              type="button"
-                              onClick={onSubmit}
-                              className="text-button button "
-                         >
+                         <button type="submit" className="text-button button ">
                               Submit Order
                          </button>
                     </div>
