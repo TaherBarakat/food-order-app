@@ -25,7 +25,7 @@ export default function Header() {
                     <img src={logo} alt="logo" /> <h1>REACTFOOD</h1>
                </div>
                <button
-                    className="button"
+                    className="order-button"
                     onClick={() => {
                          // setModalIsOpen((prev) => !prev);
                          open(cart);

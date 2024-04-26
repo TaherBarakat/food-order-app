@@ -19,17 +19,22 @@ body {
      justify-content: space-between;
      align-items: center;
      padding: 3rem 10%;
+     width: 100%;
+     flex-direction: row;
 }
 
 #main-header #title {
      display: flex;
      gap: 1rem;
      align-items: center;
+     /* font-size: 0.1rem; */
+     width: 30vw;
 }
 
 #main-header #title img {
-     width: 4rem;
-     height: 4rem;
+     height: 10vw;
+     max-height: 80px;
+     /* height: 4rem; */
      object-fit: contain;
      border-radius: 50%;
      border: 2px solid #ffc404;
@@ -37,15 +42,17 @@ body {
 
 #main-header button {
      /* all: unset; */
-     font-size: 1.5rem;
+     font-size: 1rem;
      font-family: "Lato", sans-serif;
      /* outline: none; */
+     /* height: 30%; */
+     width: 20vw;
 }
 
 h1 {
      font-family: "Lato", sans-serif;
      font-weight: 700;
-     font-size: 2rem;
+     font-size: 2vw;
      margin: 0;
      color: #ffc404;
      letter-spacing: 0.2rem;
@@ -309,4 +316,14 @@ button:disabled {
           background-color: #ccc;
           color: #d9e2f1;
      }
+}
+
+.order-button {
+     font: inherit;
+     cursor: pointer;
+     background-color: #ffc404;
+     border: 1px solid #ffc404;
+     color: #1f1a09;
+     padding: 0.5rem 0.5rem;
+     border-radius: 4px;
 }
