@@ -13,7 +13,7 @@ const CheckoutForm = forwardRef(function ({ onBack, onSubmit }, ref) {
           let customer = Object.fromEntries(formData.entries());
 
           let order = { items: cartItems, customer };
-          fetch("http://localhost:3000/orders", {
+          fetch("https://food-react-app-backend.onrender.com/orders", {
                headers: {
                     "Content-Type": "application/json",
                },

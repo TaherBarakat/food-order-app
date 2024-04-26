@@ -6,7 +6,7 @@ export default function CartItemsProvider({ children }) {
      const [cartItems, setCartItems] = useState([]);
      const [meals, setMeals] = useState([]);
      useEffect(() => {
-          fetch("http://localhost:3000/meals")
+          fetch("https://food-react-app-backend.onrender.com/meals")
                .then((res) => res.json())
                .then((meals) => setMeals(meals));
      }, []);
